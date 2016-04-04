@@ -4,6 +4,23 @@
 // Igor Pro user function for the normalization of spectra with baseline correction and smoothing options.
 // version 0.1 
 // Vito Fasano - 2016/03/24 - vito.fasano@gmail.com
+//
+//    An improved normalization function for spectroscopic application.
+//    Copyright (C) 2016  Vito Fasano
+//
+//   This program is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
 // It has been tested with Igor Pro 6.22A, but it may work with other versions. 
 //
 // Credits: Parts of the procedure is based on:
