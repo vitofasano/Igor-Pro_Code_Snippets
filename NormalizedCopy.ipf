@@ -2,7 +2,7 @@
 // 
 // An improved normalization function for spectroscopic application.
 // Igor Pro user function for the normalization of spectra with baseline correction and smoothing options.
-// version 0.1 
+// version 0.1.1 
 // Vito Fasano - 2016/03/24 - vito.fasano@gmail.com
 //
 //    An improved normalization function for spectroscopic application.
@@ -117,7 +117,7 @@ endif
 if (nametype==0)			//suffix
 String outputName = NameofWave(input)+"_norm"
 endif
-if (nametype==1)	
+if (nametype==1)			//prefix	
 outputName = "norm_" + NameofWave(input)
 endif
 // Duplicate the original wave as a wave with the new name, and optionally smoothed
