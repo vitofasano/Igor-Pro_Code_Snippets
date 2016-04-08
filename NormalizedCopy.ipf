@@ -2,8 +2,8 @@
 // 
 // An improved normalization function for spectroscopic application.
 // Igor Pro user function for the normalization of spectra with baseline correction and smoothing options.
-// version 0.1.1 
-// Vito Fasano - 2016/03/24 - vito.fasano@gmail.com
+// version 0.1.2 
+// Vito Fasano - 2016/04/08 - vito.fasano@gmail.com
 //
 //    An improved normalization function for spectroscopic application.
 //    Copyright (C) 2016  Vito Fasano
@@ -37,7 +37,7 @@
 // > leftmark, rightmark : marks of peak range (POINTS or X RANGE)
 // > bc_switch : 0 for no-baseline correction or 1 for baseline correction
 // > left_bc, right_bc : marks of baseline range (POINTS or X RANGE)
-// > smth: 0 for no-smoothing on normalized spectrum or 1 for smoothing on normalized spectrum
+// > smth_switch: 0 for no-smoothing on normalized spectrum or 1 for smoothing on normalized spectrum
 // > smth_points : Parameter for smoothing function
 // > nametype : 0 for "_norm" suffix for normalized wave name or 1 for "norm_" prefix for normalized wave name
 //
@@ -52,9 +52,9 @@
 // The smoothing option for normalized spectrum can be used in both modalities (simple or improved modality)
 //
 
-Function NormalizedCopy(input, peakvalue, modality, rangetype, leftmark, rightmark, bc_switch, left_bc, right_bc, smth, smth_points, nametype)
+Function NormalizedCopy(input, peakvalue, modality, rangetype, leftmark, rightmark, bc_switch, left_bc, right_bc, smth_switch, smth_points, nametype)
 Wave input
-Variable peakvalue, modality, rangetype, leftmark, rightmark, bc_switch, left_bc, right_bc, smth, smth_points, nametype
+Variable peakvalue, modality, rangetype, leftmark, rightmark, bc_switch, left_bc, right_bc, smth_switch, smth_points, nametype
 Variable maxValue,Bottom
 Bottom=0
 
@@ -83,10 +83,10 @@ if (left_bc > right_bc)
 print "Warning: left_bc is major to right_bc, however the normalization function will work properly."
 endif
 endif
-// Make sure that the input for smth is valid.
+// Make sure that the input for smth_switch is valid.
 // Otherwise, exit function.
-if (smth<0 || smth>1)
-print "ATTENTION: smth input is not valid!"
+if (smth_switch<0 || smth_switch>1)
+print "ATTENTION: smth_switch input is not valid!"
 return -1
 endif
 // Make sure that the input for smth_points is valid.
@@ -121,7 +121,7 @@ if (nametype==1)			//prefix
 outputName = "norm_" + NameofWave(input)
 endif
 // Duplicate the original wave as a wave with the new name, and optionally smoothed
-if (smth==0)
+if (smth_switch==0)
 Duplicate /O input $outputName
 Wave output = $outputName
 else
